@@ -1,3 +1,5 @@
+import { ReactionType } from "./api";
+
 export interface IUser {
   id: number;
   name: string;
@@ -9,6 +11,6 @@ export interface IMessage {
   message: string;
   name: string;
   avatar: string;
-  reactions: { like: number; love: number; laugh: number };
+  reactions: Record<ReactionType, number>;
   timestamp: Date;
 }

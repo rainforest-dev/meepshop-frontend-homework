@@ -11,6 +11,8 @@ export interface IConversation {
   timestamp: number;
 }
 
+export type ReactionType = "like" | "love" | "laugh";
+
 export interface IMessage {
   conversationId: number;
   userId: number;
@@ -18,11 +20,7 @@ export interface IMessage {
   avatar: string;
   messageType: "text" | "image" | "system";
   message: string;
-  reactions: {
-    like: number;
-    love: number;
-    laugh: number;
-  };
+  reactions: Record<ReactionType, number>;
   timestamp: number;
 }
 
