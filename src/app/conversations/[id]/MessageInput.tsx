@@ -20,11 +20,11 @@ interface IProps {
 
 export default function MessageInput({ prefix, conversationId }: IProps) {
   const userId = useAppSelector(selectUserId);
-  const [sendMessage] = useCreateMessageMutation();
+  const [sendMessage, { isLoading }] = useCreateMessageMutation();
   const ref = useRef<HTMLFormElement | null>(null);
   const [message, setMessage] = useState("");
   const [image, setImage] = useState<string | null>(null);
-  const isDisabled = !userId;
+  const isDisabled = !userId || isLoading;
 
   const handleMessageChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     setMessage(e.target.value);
@@ -111,7 +111,7 @@ export default function MessageInput({ prefix, conversationId }: IProps) {
         className="bg-primary text-on-primary hover:bg-primary/80 disabled:bg-primary/10 cursor-pointer rounded px-3 py-2 disabled:cursor-not-allowed"
         disabled={isDisabled}
       >
-        Send
+        {isLoading ? "Sending..." : "Send"}
       </button>
     </form>
   );
