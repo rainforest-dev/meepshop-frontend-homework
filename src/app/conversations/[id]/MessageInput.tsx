@@ -65,7 +65,7 @@ export default function MessageInput({ conversationId }: IProps) {
     <form ref={ref} className="flex gap-2 items-end" onSubmit={handleSubmit}>
       <label
         htmlFor="image"
-        className="flex-center aspect-square min-w-10 rounded-full cursor-pointer hover:bg-primary/10"
+        className="flex-center aspect-square min-w-10 rounded cursor-pointer border hover:bg-primary/10 hover:border-primary hover:text-primary"
       >
         +
         <input
@@ -90,7 +90,7 @@ export default function MessageInput({ conversationId }: IProps) {
         <input
           type="text"
           name="message"
-          className="w-full p-2 border border-primary rounded"
+          className="w-full p-2 border focus:outline-primary rounded"
           placeholder="Type a message"
           value={message}
           onChange={handleMessageChange}
@@ -98,7 +98,7 @@ export default function MessageInput({ conversationId }: IProps) {
       </div>
       <button
         type="submit"
-        className="px-3 py-2 rounded-full cursor-pointer bg-primary text-on-primary hover:bg-primary/80"
+        className="px-3 py-2 rounded cursor-pointer bg-primary text-on-primary hover:bg-primary/80"
       >
         Send
       </button>

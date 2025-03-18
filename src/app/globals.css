@@ -41,6 +41,10 @@ body {
 }
 
 @layer base {
+  html,
+  body {
+    @apply size-full;
+  }
   h1 {
     @apply text-4xl font-bold;
   }

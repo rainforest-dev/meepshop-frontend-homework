@@ -34,9 +34,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <StoreProvider>
-          <main className="container mx-auto py-10 flex gap-10 border">
+          <main className="container mx-auto py-10 flex gap-10 h-full">
             <section className="md:block hidden">{conversations}</section>
-            <section className="grow border md:block hidden">
+            <section className="grow md:block hidden bg-background-higher">
               {messages}
             </section>
             <section className="md:hidden block">{children}</section>
