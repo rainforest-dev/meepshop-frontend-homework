@@ -55,18 +55,18 @@ POST
 
 ## 評估標準
 
-基本完成度：畫面完整，符合需求
-程式結構：良好的組件拆分與可讀性
-狀態管理：可使用 useState / useContext / Zustand（非強制）
-UI/UX：設計是否清晰、易用
+- 基本完成度：畫面完整，符合需求
+- 程式結構：良好的組件拆分與可讀性
+- 狀態管理：可使用 useState / useContext / Zustand（非強制）
+- UI/UX：設計是否清晰、易用
 
 ## 額外加分項目
 
-訊息即時更新效果（例如 setTimeout 模擬 WebSocket）
-訊息反應（like/love/laugh）
-圖片 Lazy Loading
-深色模式
+- 訊息即時更新效果（例如 setTimeout 模擬 WebSocket）
+- 訊息反應（like/love/laugh）
+- 圖片 Lazy Loading
+- 深色模式
 
 ## 加分項目 (非強制)
 
-後端 DB 設計：若有能力實作出完整的後端功能也可以挑戰看看！
+- 後端 DB 設計：若有能力實作出完整的後端功能也可以挑戰看看！

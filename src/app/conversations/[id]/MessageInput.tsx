@@ -8,18 +8,22 @@ import {
   useState,
 } from "react";
 
+import { useAppSelector } from "@/store/hooks";
 import { useCreateMessageMutation } from "@/store/services";
-import { imageToBase64, USER_ID } from "@/utils";
+import { selectUserId } from "@/store/slices";
+import { imageToBase64 } from "@/utils";
 
 interface IProps {
   conversationId: number;
 }
 
 export default function MessageInput({ conversationId }: IProps) {
+  const userId = useAppSelector(selectUserId);
   const [sendMessage] = useCreateMessageMutation();
   const ref = useRef<HTMLFormElement | null>(null);
   const [message, setMessage] = useState("");
   const [image, setImage] = useState<string | null>(null);
+  const isDisabled = !userId;
 
   const handleMessageChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     setMessage(e.target.value);
@@ -34,6 +38,7 @@ export default function MessageInput({ conversationId }: IProps) {
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
+    if (!userId) return;
     const messages = [];
     const formData = new FormData(e.target as HTMLFormElement);
     const image = formData.get("image") as File;
@@ -41,7 +46,7 @@ export default function MessageInput({ conversationId }: IProps) {
       const message = await imageToBase64(image);
       const res = await sendMessage({
         conversationId,
-        userId: USER_ID,
+        userId,
         messageType: "image",
         message,
       });
@@ -51,7 +56,7 @@ export default function MessageInput({ conversationId }: IProps) {
     if (message) {
       const res = await sendMessage({
         conversationId,
-        userId: USER_ID,
+        userId,
         messageType: "text",
         message,
       });
@@ -100,6 +105,7 @@ export default function MessageInput({ conversationId }: IProps) {
       <button
         type="submit"
         className="bg-primary text-on-primary hover:bg-primary/80 cursor-pointer rounded px-3 py-2"
+        disabled={isDisabled}
       >
         Send
       </button>

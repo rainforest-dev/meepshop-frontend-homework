@@ -2,10 +2,12 @@
 
 import { Message } from "@/components";
 import { MessageSkeleton } from "@/components/skeletons";
+import { useAppSelector } from "@/store/hooks";
 import { useGetMessagesQuery } from "@/store/services";
+import { selectUserId } from "@/store/slices";
 import type { IMessage } from "@/types";
 import type { ReactionType } from "@/types/api";
-import { transferMessage, USER_ID } from "@/utils";
+import { transferMessage } from "@/utils";
 
 const getMessageKey = (
   conversationId: number,
@@ -16,6 +18,7 @@ const getMessageKey = (
 };
 
 export default function Messages({ id }: { id: number }) {
+  const userId = useAppSelector(selectUserId);
   const { data: messages = [], isLoading } = useGetMessagesQuery(id);
 
   const handleReact = (message: IMessage, reaction: ReactionType) => {
@@ -41,7 +44,7 @@ export default function Messages({ id }: { id: number }) {
           _message.userId,
           _message.timestamp,
         );
-        const isMine = _message.userId === USER_ID;
+        const isMine = _message.userId === userId;
         return (
           <Message
             key={key}

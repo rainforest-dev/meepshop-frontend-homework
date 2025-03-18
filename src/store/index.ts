@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import { api } from "./services";
+import rootReducer from "./slices";
 
 export const store = configureStore({
   reducer: {
+    root: rootReducer,
     [api.reducerPath]: api.reducer,
   },
   middleware: (getDefaultMiddleware) =>
