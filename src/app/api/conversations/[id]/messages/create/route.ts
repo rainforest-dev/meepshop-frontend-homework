@@ -3,9 +3,10 @@ import { createMessage } from "@/utils";
 
 export const POST = async (
   request: Request,
-  { params }: { params: Promise<{ id: number }> }
+  { params }: { params: Promise<{ id: string }> }
 ) => {
-  const { id } = await params;
+  const { id: _id } = await params;
+  const id = parseInt(_id);
   const body = await request.json();
   const { message, userId, messageType } = body as CreateMessagePayloadType;
 
