@@ -7,7 +7,7 @@ export default function MessageHeader({ id }: { id: number }) {
   const title = conversation?.participants.map((p) => p.user).join(", ");
   return (
     <div className="flex items-center justify-between">
-      <h2 className="text-xl font-bold">{title}</h2>
+      <h2>{title}</h2>
     </div>
   );
 }
