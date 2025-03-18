@@ -36,12 +36,12 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <StoreProvider>
-          <main className="container mx-auto flex h-full gap-10 py-10">
+          <main className="container mx-auto flex size-full gap-10 py-10">
             <section className="hidden md:block">{conversations}</section>
             <section className="bg-background-higher hidden grow md:block">
               {messages}
             </section>
-            <section className="block md:hidden">{children}</section>
+            <section className="block w-full md:hidden">{children}</section>
           </main>
         </StoreProvider>
       </body>

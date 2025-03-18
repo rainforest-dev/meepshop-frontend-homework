@@ -11,7 +11,7 @@ export default async function Page({
   const id = parseInt(_id);
 
   return (
-    <div className="relative flex h-full flex-col">
+    <div className="relative flex size-full flex-col">
       <div className="bg-background sticky top-0 px-4 pt-6 pb-3">
         <MessageHeader id={id} />
       </div>
