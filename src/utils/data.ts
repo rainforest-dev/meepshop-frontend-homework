@@ -21,6 +21,10 @@ conversations.forEach((conversation) => {
 
 export { users };
 
+export const getUserById = (id: number) => {
+  return users.get(id);
+};
+
 export const createMessage = (payload: CreateMessagePayloadType) => {
   const user = users.get(payload.userId);
   if (!user) {
