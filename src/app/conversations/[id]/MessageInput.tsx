@@ -14,10 +14,11 @@ import { selectUserId } from "@/store/slices";
 import { imageToBase64 } from "@/utils";
 
 interface IProps {
+  prefix: string;
   conversationId: number;
 }
 
-export default function MessageInput({ conversationId }: IProps) {
+export default function MessageInput({ prefix, conversationId }: IProps) {
   const userId = useAppSelector(selectUserId);
   const [sendMessage] = useCreateMessageMutation();
   const ref = useRef<HTMLFormElement | null>(null);
@@ -29,10 +30,12 @@ export default function MessageInput({ conversationId }: IProps) {
     setMessage(e.target.value);
   };
 
-  const handleImageChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+  const handleImageChange: ChangeEventHandler<HTMLInputElement> = async (e) => {
     const file = e.target.files?.[0];
+    console.log(file);
     if (file) {
-      imageToBase64(file).then(setImage);
+      const image = await imageToBase64(file);
+      setImage(image);
     }
   };
 
@@ -42,6 +45,7 @@ export default function MessageInput({ conversationId }: IProps) {
     const messages = [];
     const formData = new FormData(e.target as HTMLFormElement);
     const image = formData.get("image") as File;
+    console.log(image);
     if (image && image.type.startsWith("image/")) {
       const message = await imageToBase64(image);
       const res = await sendMessage({
@@ -70,13 +74,13 @@ export default function MessageInput({ conversationId }: IProps) {
   return (
     <form ref={ref} className="flex items-end gap-2" onSubmit={handleSubmit}>
       <label
-        htmlFor="image"
+        htmlFor={`${prefix}-image`}
         className="flex-center hover:bg-primary/10 hover:border-primary hover:text-primary aspect-square min-w-10 cursor-pointer rounded border"
       >
         +
         <input
           type="file"
-          id="image"
+          id={`${prefix}-image`}
           name="image"
           accept="image/*"
           className="sr-only"
@@ -104,7 +108,7 @@ export default function MessageInput({ conversationId }: IProps) {
       </div>
       <button
         type="submit"
-        className="bg-primary text-on-primary hover:bg-primary/80 cursor-pointer rounded px-3 py-2"
+        className="bg-primary text-on-primary hover:bg-primary/80 disabled:bg-primary/10 cursor-pointer rounded px-3 py-2 disabled:cursor-not-allowed"
         disabled={isDisabled}
       >
         Send

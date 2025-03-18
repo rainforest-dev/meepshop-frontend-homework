@@ -6,7 +6,7 @@ export const GET = async (
 ) => {
   const { id: _id } = await params;
   const id = parseInt(_id);
-  const user = getUserById(id);
+  const user = await getUserById(id);
 
   if (!user) {
     return new Response("User not found", { status: 404 });

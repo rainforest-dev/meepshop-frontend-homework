@@ -26,3 +26,5 @@ export const imageToBase64 = (file: File): Promise<string> =>
     };
     reader.readAsDataURL(file);
   });
+
+export const isServerSide = typeof window === "undefined";

@@ -10,7 +10,7 @@ export const POST = async (
   const body = await request.json();
   const { message, userId, messageType } = body as CreateMessagePayloadType;
 
-  const newMessage = createMessage({
+  const newMessage = await createMessage({
     conversationId: id,
     message,
     userId,

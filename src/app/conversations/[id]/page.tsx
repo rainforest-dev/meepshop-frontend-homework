@@ -18,8 +18,8 @@ export default async function Page({
       <div className="flex h-full flex-col-reverse gap-3 overflow-auto rounded px-4 py-3">
         <Messages id={id} />
       </div>
-      <div className="self-justify-end bg-background sticky bottom-0 pt-3 pb-6">
-        <MessageInput conversationId={id} />
+      <div className="bg-background sticky bottom-0 pt-3 pb-6">
+        <MessageInput prefix="mobile" conversationId={id} />
       </div>
     </div>
   );
