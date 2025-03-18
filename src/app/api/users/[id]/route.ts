@@ -2,7 +2,7 @@ import { getUserById } from "@/utils";
 
 export const GET = async (
   request: Request,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: Promise<{ id: string }> },
 ) => {
   const { id: _id } = await params;
   const id = parseInt(_id);

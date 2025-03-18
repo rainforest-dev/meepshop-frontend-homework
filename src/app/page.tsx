@@ -9,7 +9,7 @@ export default async function Home({
   const { id: _id } = await params;
   const id = _id ? Number(_id) : undefined;
   return (
-    <div className="flex flex-col gap-4 h-full pb-6">
+    <div className="flex h-full flex-col gap-4 pb-6">
       <h1>Conversations</h1>
       <div className="grow">
         <Conversations id={id} />

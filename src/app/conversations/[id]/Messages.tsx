@@ -19,7 +19,7 @@ export default function Messages({ id }: { id: number }) {
   const { data: messages = [], isLoading } = useGetMessagesQuery(id);
 
   const handleReact = (message: IMessage, reaction: ReactionType) => {
-    console.log(message, reaction);
+    alert(`You reacted with ${reaction} to message: ${message.message}`);
   };
 
   if (isLoading)

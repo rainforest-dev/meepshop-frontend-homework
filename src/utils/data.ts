@@ -2,8 +2,8 @@ import json from "@/assets/chat_data.json";
 import type {
   CreateMessagePayloadType,
   IConversation,
-  IUser,
   IMessage,
+  IUser,
 } from "@/types/api";
 
 const conversations = json.conversations as IConversation[];

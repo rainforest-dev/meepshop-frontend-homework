@@ -1,8 +1,10 @@
+import "./globals.css";
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import { StoreProvider } from "@/store/provider";
 import React from "react";
+
+import { StoreProvider } from "@/store/provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,12 +36,12 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <StoreProvider>
-          <main className="container mx-auto py-10 flex gap-10 h-full">
-            <section className="md:block hidden">{conversations}</section>
-            <section className="grow md:block hidden bg-background-higher">
+          <main className="container mx-auto flex h-full gap-10 py-10">
+            <section className="hidden md:block">{conversations}</section>
+            <section className="bg-background-higher hidden grow md:block">
               {messages}
             </section>
-            <section className="md:hidden block">{children}</section>
+            <section className="block md:hidden">{children}</section>
           </main>
         </StoreProvider>
       </body>

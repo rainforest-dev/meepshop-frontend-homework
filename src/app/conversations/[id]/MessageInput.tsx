@@ -1,13 +1,14 @@
 "use client";
 
-import { useCreateMessageMutation } from "@/store/services";
+import NextImage from "next/image";
 import {
   type ChangeEventHandler,
   type FormEventHandler,
   useRef,
   useState,
 } from "react";
-import NextImage from "next/image";
+
+import { useCreateMessageMutation } from "@/store/services";
 import { imageToBase64, USER_ID } from "@/utils";
 
 interface IProps {

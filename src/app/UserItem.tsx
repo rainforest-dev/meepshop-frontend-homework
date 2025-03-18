@@ -1,9 +1,10 @@
 "use client";
 
+import NextImage from "next/image";
+
 import { UserItemSkeleton } from "@/components/skeletons";
 import { useGetUserQuery } from "@/store/services";
 import { USER_ID } from "@/utils";
-import NextImage from "next/image";
 
 export default function UserItem() {
   const { data: user, isLoading } = useGetUserQuery(USER_ID);

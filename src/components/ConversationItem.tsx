@@ -1,7 +1,8 @@
-import type { IConversation } from "@/types/api";
-import { DATETIME_FORMAT } from "@/utils";
 import { format, formatDistanceToNowStrict } from "date-fns";
 import NextLink from "next/link";
+
+import type { IConversation } from "@/types/api";
+import { DATETIME_FORMAT } from "@/utils";
 
 interface IProps extends IConversation {
   isActive?: boolean;
@@ -22,12 +23,10 @@ export default function ConversationItem({
       <NextLink
         href={`/conversations/${id}`}
         data-active={isActive}
-        className="flex flex-col gap-1 px-4 py-2 rounded 
-                    hover:bg-background-higher 
-                    data-[active=true]:bg-background-higher data-[active=true]:border"
+        className="hover:bg-background-higher data-[active=true]:bg-background-higher flex flex-col gap-1 rounded px-4 py-2 data-[active=true]:border"
       >
         <h3 className="">{title}</h3>
-        <p className="flex justify-between items-end text-sm">
+        <p className="flex items-end justify-between text-sm">
           {lastMessage}
           <time
             dateTime={format(date, DATETIME_FORMAT)}

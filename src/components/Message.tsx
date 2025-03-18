@@ -1,10 +1,12 @@
-import type { IMessage } from "@/types";
 import clsx from "clsx";
-import NextImage from "next/image";
-import Reactions from "./Reactions";
 import { format } from "date-fns";
-import { DATETIME_FORMAT } from "@/utils";
+import NextImage from "next/image";
 import { ComponentProps } from "react";
+
+import type { IMessage } from "@/types";
+import { DATETIME_FORMAT } from "@/utils";
+
+import Reactions from "./Reactions";
 
 interface IProps extends IMessage, ComponentProps<typeof Reactions> {
   isMine: boolean;
@@ -49,28 +51,28 @@ export default function Message({
         width={40}
         height={40}
         alt={name}
-        className="object-cover rounded-full size-10"
+        className="size-10 rounded-full object-cover"
       />
       <div
         className={clsx("flex flex-col gap-1.5 px-1", isMine && "items-end")}
       >
         <div
           className={clsx(
-            "bg-background-higher p-2 rounded-xl shadow relative",
-            isMine ? "rounded-tr-none" : "rounded-tl-none"
+            "bg-background-higher relative rounded-xl p-2 shadow",
+            isMine ? "rounded-tr-none" : "rounded-tl-none",
           )}
         >
           <Content type={type} message={message} />
           <div
             className={clsx(
               "absolute bottom-0 translate-y-1/2",
-              isMine ? "left-0 translate-x-1/2" : "right-0 -translate-x-1/2"
+              isMine ? "left-0 translate-x-1/2" : "right-0 -translate-x-1/2",
             )}
           >
             <Reactions reactions={reactions} onReact={onReact} />
           </div>
         </div>
-        <div className="text-xs text-foreground/50">{timestamp}</div>
+        <div className="text-foreground/50 text-xs">{timestamp}</div>
       </div>
     </div>
   );

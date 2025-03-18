@@ -1,3 +1,6 @@
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import queryString from "query-string";
+
 import type { IUser } from "@/types";
 import type {
   CreateMessagePayloadType,
@@ -5,8 +8,6 @@ import type {
   IMessage,
   IUser as IUserServer,
 } from "@/types/api";
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import queryString from "query-string";
 
 export const api = createApi({
   reducerPath: "api",

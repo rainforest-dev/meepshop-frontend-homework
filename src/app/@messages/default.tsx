@@ -1,3 +1,3 @@
 export default function Default() {
-  return <div className="size-full flex-center">Select a Conversation</div>;
+  return <div className="flex-center size-full">Select a Conversation</div>;
 }

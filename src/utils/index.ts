@@ -1,8 +1,8 @@
 import { IMessage as IMessageServer } from "@/types/api";
 import { IMessage } from "@/types/ui";
 
-export * from "./data";
 export * from "./constants";
+export * from "./data";
 
 export const transferMessage = (message: IMessageServer): IMessage => ({
   type: message.messageType,
