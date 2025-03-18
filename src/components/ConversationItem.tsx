@@ -16,7 +16,7 @@ export default function ConversationItem({
     <li>
       <NextLink
         href={`/conversations/${id}`}
-        className="flex flex-col gap-1 px-4 py-2 rounded"
+        className="flex flex-col gap-1 px-4 py-2 rounded hover:bg-background-higher"
       >
         <h2>{title}</h2>
         <p className="flex justify-between">
