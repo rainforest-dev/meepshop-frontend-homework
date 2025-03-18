@@ -1,5 +1,77 @@
 # Frontend 面試考題 - 即時聊天室
 
+## Development Workflow
+
+### Prerequisites
+
+- Ensure you have Node.js and npm installed.
+- Install dependencies by running `npm install`.
+
+### Running the Project
+
+1. Pull the `.env.local` file from Vercel by running the following command:
+
+```bash
+npx vercel env pull
+```
+
+Ensure you have the Vercel CLI installed and authenticated.
+
+2. Start the development server:
+
+```bash
+npm run dev
+```
+
+3. Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
+
+### Code Standards
+
+- Follow the ESLint and Prettier configurations provided in the project.
+- Run `npm run lint` to check for linting issues.
+
+### Deployment
+
+- Ensure all tests pass and the code is lint-free.
+- Push changes to the main branch; the deployment pipeline will handle the rest.
+
+## Project Structure
+
+### Overview
+
+The project follows a modular structure to ensure scalability and maintainability.
+
+```
+/
+├── public/                # Static assets (images, fonts, etc.)
+├── src/                   # Source code
+│   ├── app/               # Next.js app directory
+│   │   ├── api/           # API routes
+│   │   ├── conversations/ # Conversation-related pages
+│   │   ├── components/    # Page-specific components
+│   │   └── ...            # Other app-specific directories
+│   ├── assets/            # Static assets like JSON data
+│   ├── components/        # Reusable UI components
+│   ├── store/             # Redux store and slices
+│   ├── types/             # TypeScript type definitions
+│   └── utils/             # Utility functions
+├── .github/               # GitHub-specific configurations
+├── .devcontainer/         # Dev container configuration
+├── .env.local             # Environment variables
+├── package.json           # Project metadata and dependencies
+├── README.md              # Project overview and setup instructions
+└── tsconfig.json          # TypeScript configuration
+```
+
+### Key Directories
+
+- **`app/`**: Contains Next.js app directory, including API routes and pages.
+- **`assets/`**: Static assets like JSON data.
+- **`components/`**: Reusable React components.
+- **`store/`**: Redux store, slices, and services.
+- **`types/`**: TypeScript interfaces and type definitions.
+- **`utils/`**: Helper functions for common tasks.
+
 ## 目標
 
 請開發一個 多人即時聊天室，可以顯示「對話列表」及「聊天室內容」，
