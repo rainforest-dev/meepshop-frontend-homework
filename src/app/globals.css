@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --background: var(--color-slate-100);
-  --background-higher: var(--color-slate-50);
+  --background: var(--color-slate-200);
+  --background-higher: var(--color-slate-100);
+  --background-highest: var(--color-slate-50);
   --foreground: var(--color-slate-950);
   --primary: var(--color-cyan-500);
   --on-primary: var(--color-cyan-100);
@@ -13,6 +14,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-background-higher: var(--background-higher);
+  --color-background-highest: var(--background-highest);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-on-primary: var(--on-primary);
@@ -20,12 +22,16 @@
   --color-on-secondary: var(--on-secondary);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --spacing-lh: 1lh;
+  --radius-lh: 1lh;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: var(--color-slate-800);
-    --background-higher: var(--color-slate-900);
+    --background: var(--color-slate-700);
+    --background-higher: var(--color-slate-800);
+    --background-highest: var(--color-slate-900);
     --foreground: var(--color-slate-50);
     --primary: var(--color-cyan-500);
     --on-primary: var(--color-cyan-100);
@@ -58,4 +64,12 @@ body {
 
 @utility flex-center {
   @apply flex items-center justify-center;
+}
+
+@utility skeleton-* {
+  /* prettier-ignore */
+  background-color: --value(--color-*);
+  background-color: --value(color);
+  background-color: --value([color]);
+  @apply rounded-lh animate-pulse;
 }
