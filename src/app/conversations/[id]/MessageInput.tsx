@@ -36,7 +36,7 @@ export default function MessageInput({ conversationId }: IProps) {
     const messages = [];
     const formData = new FormData(e.target as HTMLFormElement);
     const image = formData.get("image") as File;
-    if (image) {
+    if (image && image.type.startsWith("image/")) {
       const message = await imageToBase64(image);
       const res = await sendMessage({
         conversationId,
@@ -62,10 +62,10 @@ export default function MessageInput({ conversationId }: IProps) {
   };
 
   return (
-    <form ref={ref} className="flex gap-2 items-end" onSubmit={handleSubmit}>
+    <form ref={ref} className="flex items-end gap-2" onSubmit={handleSubmit}>
       <label
         htmlFor="image"
-        className="flex-center aspect-square min-w-10 rounded cursor-pointer border hover:bg-primary/10 hover:border-primary hover:text-primary"
+        className="flex-center hover:bg-primary/10 hover:border-primary hover:text-primary aspect-square min-w-10 cursor-pointer rounded border"
       >
         +
         <input
@@ -84,13 +84,13 @@ export default function MessageInput({ conversationId }: IProps) {
             width={300}
             height={300}
             alt="image"
-            className="object-cover mb-2"
+            className="mb-2 object-cover"
           />
         )}
         <input
           type="text"
           name="message"
-          className="w-full p-2 border focus:outline-primary rounded"
+          className="focus:outline-primary w-full rounded border p-2"
           placeholder="Type a message"
           value={message}
           onChange={handleMessageChange}
@@ -98,7 +98,7 @@ export default function MessageInput({ conversationId }: IProps) {
       </div>
       <button
         type="submit"
-        className="px-3 py-2 rounded cursor-pointer bg-primary text-on-primary hover:bg-primary/80"
+        className="bg-primary text-on-primary hover:bg-primary/80 cursor-pointer rounded px-3 py-2"
       >
         Send
       </button>

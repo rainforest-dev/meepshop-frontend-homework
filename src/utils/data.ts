@@ -6,9 +6,9 @@ import type {
   IMessage,
 } from "@/types/api";
 
-export const conversations = json.conversations as IConversation[];
+const conversations = json.conversations as IConversation[];
 
-export const messages = json.messages as IMessage[];
+const messages = json.messages as IMessage[];
 
 const users = new Map<number, IUser>();
 conversations.forEach((conversation) => {
@@ -19,7 +19,13 @@ conversations.forEach((conversation) => {
   });
 });
 
-export { users };
+export const getConversations = () => {
+  return conversations;
+};
+
+export const getUsers = () => {
+  return conversations;
+};
 
 export const getUserById = (id: number) => {
   return users.get(id);
@@ -48,6 +54,6 @@ export const getMessages = (conversationId?: number) => {
     return messages;
   }
   return messages.filter(
-    (message) => message.conversationId === conversationId
+    (message) => message.conversationId === conversationId,
   );
 };

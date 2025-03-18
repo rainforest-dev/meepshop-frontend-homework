@@ -11,14 +11,14 @@ export default async function Page({
   const id = parseInt(_id);
 
   return (
-    <div className="relative flex flex-col h-full">
-      <div className="sticky top-0 bg-background px-4 pt-6 pb-3">
+    <div className="relative flex h-full flex-col">
+      <div className="bg-background sticky top-0 px-4 pt-6 pb-3">
         <MessageHeader id={id} />
       </div>
-      <div className="h-full flex flex-col gap-3 overflow-auto px-4 py-3 rounded">
+      <div className="flex h-full flex-col-reverse gap-3 overflow-auto rounded px-4 py-3">
         <Messages id={id} />
       </div>
-      <div className="sticky bottom-0 self-justify-end bg-background pb-6 pt-3">
+      <div className="self-justify-end bg-background sticky bottom-0 pt-3 pb-6">
         <MessageInput conversationId={id} />
       </div>
     </div>

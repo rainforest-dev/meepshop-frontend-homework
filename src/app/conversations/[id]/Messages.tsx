@@ -16,7 +16,7 @@ const getMessageKey = (
 };
 
 export default function Messages({ id }: { id: number }) {
-  const { data: messages, isLoading } = useGetMessagesQuery(id);
+  const { data: messages = [], isLoading } = useGetMessagesQuery(id);
 
   const handleReact = (message: IMessage, reaction: ReactionType) => {
     console.log(message, reaction);
@@ -34,7 +34,7 @@ export default function Messages({ id }: { id: number }) {
 
   return (
     <>
-      {messages?.map((_message) => {
+      {[...messages].reverse().map((_message) => {
         const message = transferMessage(_message);
         const key = getMessageKey(
           _message.conversationId,
