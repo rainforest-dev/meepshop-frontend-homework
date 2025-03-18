@@ -11,7 +11,7 @@ import type {
 
 export const api = createApi({
   reducerPath: "api",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3000/api" }),
+  baseQuery: fetchBaseQuery({ baseUrl: "/api" }),
   tagTypes: ["conversations", "messages"],
   endpoints: (build) => ({
     getUser: build.query<IUser, number>({
