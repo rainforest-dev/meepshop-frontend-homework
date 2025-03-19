@@ -1,5 +1,9 @@
 # Frontend 面試考題 - 即時聊天室
 
+https://github.com/user-attachments/assets/0b2080db-e958-4f79-91a9-fe8301a3c5b0
+
+![demo-rwd](https://github.com/user-attachments/assets/2cd04670-1a2a-429c-b967-5a41ab4e023d)
+
 ## Development Workflow
 
 ### Prerequisites
