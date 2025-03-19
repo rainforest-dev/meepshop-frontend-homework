@@ -4,7 +4,7 @@ import NextImage from "next/image";
 import { ComponentProps } from "react";
 
 import type { IMessage } from "@/types";
-import { DATETIME_FORMAT } from "@/utils";
+import { DATETIME_FORMAT, rgbDataURL } from "@/utils";
 
 import Reactions from "./Reactions";
 
@@ -25,6 +25,8 @@ const Content = ({ type, message }: Pick<IProps, "type" | "message">) => {
           height={200}
           alt="image"
           className="rounded-xl rounded-tl-none shadow"
+          placeholder="blur"
+          blurDataURL={rgbDataURL(128, 128, 128)}
         />
       );
   }
